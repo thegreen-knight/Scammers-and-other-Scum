@@ -1,0 +1,17 @@
+#!/usr/bin/python3
+
+import csv
+
+input_file = 'list.csv'
+
+with open(input_file, 'r', newline='', encoding='utf-8') as infile:
+    reader = csv.reader(infile)
+    data = list(reader)
+
+unique_data = [list(t) for t in {tuple(row) for row in data}]
+
+with open(input_file, 'w', newline='', encoding='utf-8') as outfile:
+    writer = csv.writer(outfile)
+    writer.writerows(unique_data)
+
+print("All done ready to push to Github.")
